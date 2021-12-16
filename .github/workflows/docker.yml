@@ -7,5 +7,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Login to Docker
         run: docker login -u halftome -p ${{ secrets.REGISTRY_PASSWORD }}
-      - name: Build and push the Docker images
-        run: docker build -t halftome/buildx-builder --push .
+      - name: Build the Docker image
+        run: docker build -t halftome/buildx-builder .
+      - name: Push the Docker image
+        run: docker push halftome/buildx-builder
